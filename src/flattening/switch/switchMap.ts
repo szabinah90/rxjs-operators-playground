@@ -6,7 +6,7 @@ switchMap
 - subscribes to that observable
 - unsubscribes from the previous observable
 - is subscribed to one observable at a time
-- cancels in-flight netwprk requests! -> "switch to a new observable"
+- cancels in-flight network requests! -> "switch to a new observable"
 - Commonly used for HTTP GET
 - switching between two streams
 */
@@ -55,7 +55,7 @@ export function BasicSimulatedHttp() {
 
 export function MultipleSimulatedHttp() {
     // ! SOURCE observable
-    // * once it emits, the source value emitted is passed to the function in the switchMap operator
+    // * once it emits, the source value emitted is passed to the function in the switch operator
     const saveUser$ = simulateHttp('EXAMPLE 2 user saved', 5000);
 
     // ! RESULT observable - if we dont subscribe to it, nothing will happen
@@ -81,7 +81,7 @@ export function MultipleSimulatedHttp() {
 
 /**
  * ! long-lived (AngularFire-like stream === never complete,
- * ! KEEP EMITTING VALUE (if a new value is available) until unsubscribed
+ * ! KEEPS EMITTING VALUE (if a new value is available) until unsubscribed
  */
 const simulateFirebase = (val: any, delayVal: number) => {
     return interval(delayVal).pipe(map(index => `${val} ${index}`));
@@ -144,10 +144,10 @@ export function MappedFirebaseStreams() {
  * ! allow us to combine the multiple values of the inner and the source observable.
 */
 /*export function SelectorExample0() {
-    const course$ = simulateHttp({id: 1, description: 'switchMap practice'}, 2000);
+    const course$ = simulateHttp({id: 1, description: 'switch practice'}, 2000);
 
     const httpResult$ = course$.pipe(
-        switchMap(sourceValue => simulateHttp('[...returns a lessons array...]', 1000)));
+        switch(sourceValue => simulateHttp('[...returns a lessons array...]', 1000)));
     /!**
     *! return ONLY the lessons array returned from the request (emitted as the value of the result observable)
     *!/
@@ -159,7 +159,7 @@ export function MappedFirebaseStreams() {
 }*/
 
 export function SwitchMapWithSelector() {
-    const course$ = simulateHttp({id: 1, description: 'switchMap practice'}, 2000);
+    const course$ = simulateHttp({id: 1, description: 'switch practice'}, 2000);
     const lessons = [
         {title: 'lesson 1'},
         {title: 'lesson 2'},
@@ -169,7 +169,7 @@ export function SwitchMapWithSelector() {
     const httpResult$ = course$.pipe(switchMap(
         /**
         *! selector function takes 4 arguments:
-         * ! 1. value of the source observable (course object returned by the inital HTTP request
+         * ! 1. value of the source observable (course object returned by the initial HTTP request
          * ! 2. value of the inner observable (array with a list of lessons)
          * ! 3. source observable index
          * ! 4. inner index
