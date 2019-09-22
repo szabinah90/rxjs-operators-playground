@@ -10,7 +10,7 @@ import { exhaust, map, take} from "rxjs/operators";
 
 /**
  * * click starts a counter to 6
- * * until counter reaches 6, clicking does not have an effect (calue cahanges induced by click events are discarded)
+ * * until counter reaches 6, clicking does not have an effect (value changes induced by click events are discarded)
  * * because there is an uncompleted observable
  * * after the counter reached 6, the counter restarts on a click
 */
