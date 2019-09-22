@@ -1,6 +1,5 @@
 import {interval, of} from "rxjs";
 import {delay, map, switchMap} from "rxjs/operators";
-
 /*
 switchMap
 - maps a value to a new observable
@@ -136,7 +135,53 @@ export function MappedFirebaseStreams() {
      * * the result observable is emitting the values emitted by the new inner observable
     */
 
-    // ? SELECTOR functions
-}
 
+}
+// ? SELECTOR functions
+/**
+** a selector function can also be passed to the switchMap operator
+ * * as a second argument (after the mapping function)
+ * ! allow us to combine the multiple values of the inner and the source observable.
+*/
+/*export function SelectorExample0() {
+    const course$ = simulateHttp({id: 1, description: 'switchMap practice'}, 2000);
+
+    const httpResult$ = course$.pipe(
+        switchMap(sourceValue => simulateHttp('[...returns a lessons array...]', 1000)));
+    /!**
+    *! return ONLY the lessons array returned from the request (emitted as the value of the result observable)
+    *!/
+    httpResult$.subscribe(
+        console.log,
+        console.error,
+        () => console.log('completed httpResult')
+    );
+}*/
+
+export function SwitchMapWithSelector() {
+    const course$ = simulateHttp({id: 1, description: 'switchMap practice'}, 2000);
+    const lessons = [
+        {title: 'lesson 1'},
+        {title: 'lesson 2'},
+        {title: 'lesson 3'},
+    ];
+
+    const httpResult$ = course$.pipe(switchMap(
+        /**
+        *! selector function takes 4 arguments:
+         * ! 1. value of the source observable (course object returned by the inital HTTP request
+         * ! 2. value of the inner observable (array with a list of lessons)
+         * ! 3. source observable index
+         * ! 4. inner index
+        */
+        courses => simulateHttp(lessons, 3000),
+        (courses, lessons, outerIndex, innerIndex) => [courses, lessons]
+    ));
+
+    httpResult$.subscribe(
+        console.log,
+        console.error,
+        () => console.log('completed httpResults$')
+    );
+}
 

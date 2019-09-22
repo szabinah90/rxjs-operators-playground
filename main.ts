@@ -1,14 +1,9 @@
 import { replaceConsoleLog } from './browser/console.log';
 import { of } from 'rxjs';
-import { filter, map, switchMap, delay } from 'rxjs/operators';
-import {
-  BasicFirebaseExample,
-  BasicSimulatedHttp,
-  BasicSwitchMapWithNumberSequence, MappedFirebaseStreams,
-  MultipleSimulatedHttp
-} from "./src/switchMap/switchMap";
+import { filter, map } from 'rxjs/operators';
+import {SwitchMapWithSelector} from "./src/switchMap/switchMap";
 
-replaceConsoleLog();
+//replaceConsoleLog();
 console.log('Observable of ------------------------------------------------------------------------------------');
 
 // "operators" in Observables
@@ -35,3 +30,5 @@ console.log('switchMap ---------------------------------------------------------
 // MultipleSimulatedHttp();
 // BasicFirebaseExample();
 // MappedFirebaseStreams();
+// SelectorExample0();
+//SwitchMapWithSelector();
