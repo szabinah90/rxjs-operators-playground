@@ -1,8 +1,7 @@
 import { replaceConsoleLog } from './browser/console.log';
 import { of } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
-import {BasicConcatenation} from "./src/flattening/concatenation/concat";
-import {BasicMerge} from "./src/flattening/merging/merge";
+import {BasicExhaust} from "./src/flattening/exhaust/exhaust";
 
 replaceConsoleLog();
 console.log('Observable of ------------------------------------------------------------------------------------');
@@ -39,5 +38,8 @@ src
 /*console.log('concatenation');
 BasicConcatenation();*/
 
-console.log('merging');
-BasicMerge();
+/*console.log('merging');
+BasicMerge();*/
+
+console.log('exhaust');
+BasicExhaust();
