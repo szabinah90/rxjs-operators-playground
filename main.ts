@@ -1,8 +1,14 @@
 import { replaceConsoleLog } from './browser/console.log';
 import { of } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
-import {BasicExhaust} from "./src/flattening/exhaust/exhaust";
-
+import {BasicExhaust} from "./src/flattening/exhaust";
+import {
+  ErrorHandlingDelayedRetry,
+  ErrorHandlingFinalize, ErrorHandlingImmediateRetry, ErrorHandlingMultipleThrow,
+  ErrorHandlingOne,
+  ErrorHandlingThrowError,
+  SimpleRequest
+} from "./src/error-handling/error-handlig";
 replaceConsoleLog();
 console.log('Observable of ------------------------------------------------------------------------------------');
 
@@ -41,5 +47,5 @@ BasicConcatenation();*/
 /*console.log('merging');
 BasicMerge();*/
 
-console.log('exhaust');
-BasicExhaust();
+/*console.log('exhaust');
+BasicExhaust();*/
