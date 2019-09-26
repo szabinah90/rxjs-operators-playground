@@ -1,15 +1,7 @@
 import { replaceConsoleLog } from './browser/console.log';
 import { of } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
-import {BasicExhaust} from "./src/flattening/exhaust";
-import {
-  ErrorHandlingDelayedRetry,
-  ErrorHandlingFinalize, ErrorHandlingImmediateRetry, ErrorHandlingMultipleThrow,
-  ErrorHandlingOne,
-  ErrorHandlingThrowError,
-  SimpleRequest
-} from "./src/error-handling/error-handlig";
-import {FirstExample, TakeExample, TakeUntilExample, TakeWhileExample} from "./src/completion/take-takeuntil-takewhile";
+import {SubjectAsObservableExample, SubjectAsObservableExample2, SubjectAsObserver} from "./src/multicasting/subjects";
 replaceConsoleLog();
 console.log('Observable of ------------------------------------------------------------------------------------');
 
@@ -32,23 +24,4 @@ src
   )
   .subscribe((x) => console.log(x));
 
-
-// console.log('switchMap ------------------------------------------------------------------------------------');
-// BasicSwitchMapWithNumberSequence();
-// BasicSimulatedHttp();
-// MultipleSimulatedHttp();
-// BasicFirebaseExample();
-// MappedFirebaseStreams();
-// SelectorExample0();
-// SwitchMapWithSelector();
-
-/*console.log('concatenation');
-BasicConcatenation();*/
-
-/*console.log('merging');
-BasicMerge();*/
-
-/*console.log('exhaust');
-BasicExhaust();*/
-
-FirstExample();
+SubjectAsObserver();
