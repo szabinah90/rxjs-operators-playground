@@ -9,6 +9,7 @@ import {
   ErrorHandlingThrowError,
   SimpleRequest
 } from "./src/error-handling/error-handlig";
+import {TakeExample, TakeUntilExample, TakeWhileExample} from "./src/completion/take-takeuntil-takewhile";
 replaceConsoleLog();
 console.log('Observable of ------------------------------------------------------------------------------------');
 

@@ -150,7 +150,7 @@ export function ErrorHandlingDelayedRetry() {
             return res;
         }),
         shareReplay(),
-        retryWhen(errors => { // ! function passed to retryWhen is goning to be called once!
+        retryWhen(errors => { // ! function passed to retryWhen is going to be called once!
             return errors.pipe(
                 delayWhen(() => timer(2000)), // ! sets the delay time
                 tap(() => console.log('Retrying...'))
