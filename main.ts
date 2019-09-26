@@ -9,7 +9,7 @@ import {
   ErrorHandlingThrowError,
   SimpleRequest
 } from "./src/error-handling/error-handlig";
-import {TakeExample, TakeUntilExample, TakeWhileExample} from "./src/completion/take-takeuntil-takewhile";
+import {FirstExample, TakeExample, TakeUntilExample, TakeWhileExample} from "./src/completion/take-takeuntil-takewhile";
 replaceConsoleLog();
 console.log('Observable of ------------------------------------------------------------------------------------');
 
@@ -50,3 +50,5 @@ BasicMerge();*/
 
 /*console.log('exhaust');
 BasicExhaust();*/
+
+FirstExample();

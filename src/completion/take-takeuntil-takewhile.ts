@@ -1,5 +1,5 @@
-import {fromEvent, interval, timer} from "rxjs";
-import {take, takeUntil, takeWhile} from "rxjs/operators";
+import {fromEvent, interval, of, timer} from "rxjs";
+import {first, take, takeUntil, takeWhile} from "rxjs/operators";
 
 /**
  * ? take
@@ -28,4 +28,23 @@ export function TakeUntilExample() {
 export function TakeWhileExample() {
     // * counter runs while the emitted value is less than 10
     timer(0,500).pipe(takeWhile(x => x < 10)).subscribe(y => console.log(y));
+}
+
+/*
+? first
+* emits only the first value or the first value that meets the given condition emittd by the source observable
+    * or a default value
+* */
+export function FirstExample() {
+    //* outputs default value ad the predicate is never met.
+   of(1,2,3,4,5).pipe(first(value => value > 5, 'Default value'))
+       .subscribe(x => console.log(x));
+
+    // * takes the first emitted value of the source observable
+    of(1,2,3,4,5).pipe(first()).subscribe(x => console.log(x));
+
+    // * takes the first value that meets the predicate
+    of(1,2,3,4,5). pipe(first(val => val === 4)).subscribe(x => console.log(x));
+
+
 }
