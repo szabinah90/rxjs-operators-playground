@@ -1,7 +1,13 @@
 import { replaceConsoleLog } from './browser/console.log';
 import { of } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
-import {SubjectAsObservableExample, SubjectAsObservableExample2, SubjectAsObserver} from "./src/multicasting/subjects";
+import {
+  AsyncSubjectExample,
+  BehaviorSubjectExample, ReplaySubjectExample,
+  SubjectAsObservableExample,
+  SubjectAsObservableExample2,
+  SubjectAsObserver
+} from './src/multicasting/subjects';
 replaceConsoleLog();
 console.log('Observable of ------------------------------------------------------------------------------------');
 
@@ -24,4 +30,4 @@ src
   )
   .subscribe((x) => console.log(x));
 
-SubjectAsObserver();
+AsyncSubjectExample();
